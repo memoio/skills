@@ -40,14 +40,13 @@ API reference: [DataDID Developer Platform](https://memolabs.gitbook.io/datadid-
 2. **Choose check-in type**:
    - **DataDID points** (action record): `python scripts/checkin.py`
    - **AliveCheck** (daily alive check): `python scripts/alive_checkin.py` or `python scripts/alive_checkin.py checkin`
-3. **AliveCheck status & profile**:
+3. **AliveCheck status**:
    - Status (subscription + today check-in): `python scripts/alive_checkin.py status`
-   - Profile (display name): `python scripts/alive_checkin.py profile`
 4. **Parse output**: Reply to the user based on success/failure from the script output
 
 ## Trigger Scenarios
 
-- User says "DataDid check-in", "check in for me", "execute check-in", "AliveCheck check-in", "alive check", "check-in status", "AliveCheck profile"
+- User says "DataDid check-in", "check in for me", "execute check-in", "AliveCheck check-in", "alive check", "check-in status"
 - User asks "DataDid info", "show my DataDid", "DataDid profile", "my check-in status", "DataDid status"
 - User says "DataDid login", "log in to DataDid", "I want to login"
 - User asks "DataDid token", "how to configure DataDid", "save my token"
@@ -60,7 +59,7 @@ API reference: [DataDID Developer Platform](https://memolabs.gitbook.io/datadid-
 | `scripts/login.py` | Email + verification code login (send_code, login) |
 | `scripts/token_helper.py` | Check, save, read token; validates and auto-refreshes when access_token expires |
 | `scripts/checkin.py` | DataDID points check-in (POST /v2/data/record/add) |
-| `scripts/alive_checkin.py` | AliveCheck: checkin, status, profile |
+| `scripts/alive_checkin.py` | AliveCheck: checkin, status |
 | `scripts/datadid_info.py` | Aggregated DataDid info: user profile, points check-in today, AliveCheck status |
 
 Paths are relative to the skill directory: `datadid-checkin/`.

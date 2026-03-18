@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AliveCheck script: check-in, status, profile.
+AliveCheck script: check-in, status.
 Uses DataDID access token. API: data-did/AliveCheck/docs/API.md
 """
 import json
@@ -27,8 +27,9 @@ except ImportError:
 else:
     token = get()
 
-ALIVECHECK_BASE = os.environ.get("ALIVECHECK_BASE_URL", "http://localhost:8081")
-BASE_URL = f"{ALIVECHECK_BASE.rstrip('/')}/v2/alive-check"
+# Use same base URL as DataDID API (alive-check is served under same backend)
+DATADID_BASE = os.environ.get("DATADID_BASE_URL", "https://data-be.metamemo.one")
+BASE_URL = f"{DATADID_BASE.rstrip('/')}/v2/alive-check"
 
 
 def _request(method, path, data=None):
@@ -56,11 +57,6 @@ def get_status():
     return _request("GET", "/status")
 
 
-def get_profile():
-    """GET /profile - display name."""
-    return _request("GET", "/profile")
-
-
 def do_alive_checkin(latitude=None, longitude=None):
     """POST /checkin. Returns (success, result_dict)."""
     body = {}
@@ -78,15 +74,6 @@ if __name__ == "__main__":
 
     if cmd == "status":
         success, result = get_status()
-        if success and result.get("result") == 0:
-            data = result.get("data", {})
-            print(json.dumps(data, ensure_ascii=False, indent=2))
-        else:
-            print(result.get("error", result), file=sys.stderr)
-            sys.exit(1)
-
-    elif cmd == "profile":
-        success, result = get_profile()
         if success and result.get("result") == 0:
             data = result.get("data", {})
             print(json.dumps(data, ensure_ascii=False, indent=2))
