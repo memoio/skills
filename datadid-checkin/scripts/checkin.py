@@ -36,7 +36,7 @@ CHECKIN_URL = os.environ.get("DATADID_CHECKIN_URL", "https://data-be.metamemo.on
 HEADER_NAME = os.environ.get("DATADID_HEADER_NAME", "Authorization")
 HEADER_PREFIX = os.environ.get("DATADID_HEADER_PREFIX", "Bearer ")
 USER_AGENT = os.environ.get(
-    "DATADID_USER_AGENT",
+    "USER_AGENT",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 )
 

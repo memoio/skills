@@ -30,14 +30,21 @@ else:
 # Use same base URL as DataDID API (alive-check is served under same backend)
 DATADID_BASE = os.environ.get("DATADID_BASE_URL", "https://data-be.metamemo.one")
 BASE_URL = f"{DATADID_BASE.rstrip('/')}/v2/alive-check"
-
+USER_AGENT = os.environ.get(
+    "USER_AGENT",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+)
 
 def _request(method, path, data=None):
     """Make authenticated request. Returns (success, result_dict)."""
     import urllib.request
 
     url = f"{BASE_URL}{path}"
-    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {token}"}
+    headers = {
+        "Content-Type": "application/json", 
+        "Authorization": f"Bearer {token}", 
+        "User-Agent": USER_AGENT
+    }
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:

@@ -44,7 +44,7 @@ ALIVECHECK_BASE = os.environ.get("ALIVECHECK_BASE_URL", "http://localhost:8081")
 ALIVECHECK_STATUS_URL = f"{ALIVECHECK_BASE.rstrip('/')}/v2/alive-check/status"
 
 USER_AGENT = os.environ.get(
-    "DATADID_USER_AGENT",
+    "USER_AGENT",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 )
 
