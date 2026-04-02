@@ -28,8 +28,8 @@ else:
     token = get()
 
 # Use same base URL as DataDID API (alive-check is served under same backend)
-DATADID_BASE = os.environ.get("DATADID_BASE_URL", "https://data-be.metamemo.one")
-BASE_URL = f"{DATADID_BASE.rstrip('/')}/v2/alive-check"
+ALIVE_CHECK_BASE = os.environ.get("ALIVE_CHECK_BASE_URL", "https://datadid-alivecheck.memolabs.net")
+BASE_URL = f"{ALIVE_CHECK_BASE.rstrip('/')}/v2/alive-check"
 USER_AGENT = os.environ.get(
     "USER_AGENT",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
